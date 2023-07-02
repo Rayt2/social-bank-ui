@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AuthServiceService } from 'src/app/auth-service.service';
+import { CardServiceService } from 'src/app/card-service.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-applycard',
@@ -15,17 +17,25 @@ export class ApplycardComponent implements OnInit{
   lastName = new FormControl('', [Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   gender = new FormControl('', [Validators.required]);
+  cardNameInput:any;
+  standalone= true;
+  durationInSeconds = 5;
 
 
   formGroup:any;
-  ngOnInit(): void {
-    
-  }
-  constructor(     private authServiceService: AuthServiceService,
+  constructor(     private cardServiceService: CardServiceService,private _snackBar: MatSnackBar
     ){
     this.formGroup = new FormControl({
       
     })
+  }
+
+
+  ngOnInit(): void {
+    this.cardServiceService.selectedCardName.subscribe((value) => {
+      this.cardNameInput = value;
+    });
+    
   }
 
   getErrorMessage() {
@@ -53,18 +63,23 @@ export class ApplycardComponent implements OnInit{
       firstName : this.firstName.value, 
       lastName :this.lastName.value,
        cardName : this.cardName.value,
-       emial : this.email.value ,
+       email : this.email.value ,
       phone:this.phone.value,
     gender:this.gender.value}
-    this.authServiceService.applyCard(data).subscribe({
+    this.cardServiceService.applyCard(data).subscribe({
       next: (response) => {
+        this._snackBar.open("Request Initiated New CreditCard",'',{
+          duration:5000,
+          verticalPosition:'top'
+        })
       },
       error: (error) => {
         console.log("out", error)
 
       }
     });
-
+    
+    
 
   }
 }

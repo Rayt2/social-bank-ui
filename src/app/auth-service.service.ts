@@ -20,17 +20,7 @@ login(data: any): Observable<any> {
   );
 }
 
-applyCard(data: any): Observable<any> {
-  console.log(data)
-  return this.httpClient.post('http://localhost:8090/applycard', data, {
-    observe: 'response',
-  }).pipe(
-    tap(
-      (data) => this.handleResponse(data),
-      (error) => this.handleError(error)
-    )
-  );
-}
+
 
 
 /**

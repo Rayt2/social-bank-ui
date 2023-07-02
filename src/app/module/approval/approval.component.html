@@ -1,26 +1,29 @@
 <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="this.getAllCardData">
   
       <!-- Position Column -->
       <ng-container matColumnDef="position">
         <th mat-header-cell *matHeaderCellDef> UserName </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> CardName </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.cardName}} </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="weight">
         <th mat-header-cell *matHeaderCellDef> Action </th>
-        <td mat-cell *matCellDef="let element"> 
-            <button mat-raised-button style="margin-right: 16px;" color="primary" type="submit">Approve</button>
-            <button mat-raised-button  style="margin-right: 16px;" color="warn" type="submit">Canel</button>
+        <td  mat-cell *matCellDef="let element" > 
+            <button *ngIf="element.status==='pending'" mat-raised-button style="margin-right: 16px;" color="primary"  (click)="approveCard(element.cardName,element.email,'approve')">Approve</button>
+            <button *ngIf="element.status==='pending'" mat-raised-button  style="margin-right: 16px;" color="warn"  (click)="approveCard(element.cardName,element.email,'cancel')">Canel</button>
+            <button *ngIf="element.status==='approve'" mat-raised-button style="margin-right: 16px;" color="green" >Approved</button>
+            <button *ngIf="element.status==='cancel'" mat-raised-button style="margin-right: 16px;" color="warn" >Canel</button>
 
         </td>
+       
       </ng-container>
   
     

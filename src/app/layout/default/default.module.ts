@@ -25,13 +25,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { ApplycardComponent } from 'src/app/module/applycard/applycard.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ApprovalComponent } from 'src/app/module/approval/approval.component';
+import {MatSnackBar, MatSnackBarRef, MatSnackBarModule} from '@angular/material/snack-bar';
+import { PopupComponent } from 'src/app/module/popup/popup.component';
 
 
 @NgModule({
   declarations: [DefaultComponent,
   DashboardComponent,
 PostsComponent,CreditcardComponent,
-DialogComponent,ApplycardComponent,ApprovalComponent],
+DialogComponent,ApprovalComponent,ApplycardComponent,PopupComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -51,7 +53,8 @@ DialogComponent,ApplycardComponent,ApprovalComponent],
     ReactiveFormsModule,
     NgIf,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ]
 })
 export class DefaultModule { }
