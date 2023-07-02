@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./default.component.css']
 })
 export class DefaultComponent {
-  sideBarOpen =true;
+  sideBarOpen =false;
 
   sideBarToggler(event:Event) {
     this.sideBarOpen = !this.sideBarOpen;

@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit  {
 
   constructor(private router: Router) { }
-
+  userName:any;
   ngOnInit() {
+    this.userName =localStorage.getItem('user_name');
+
   }
   redirectToCard(){
     this.router.navigate(['/creditcard']);

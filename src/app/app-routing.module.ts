@@ -7,13 +7,14 @@ import { PostsComponent } from './module/posts/posts.component';
 import { CreditcardComponent } from './module/creditcard/creditcard.component';
 import { ApplycardComponent } from './module/applycard/applycard.component';
 import { ApprovalComponent } from './module/approval/approval.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
 
  {path:'login',component:LoginComponent},
 {
   path:'',
-component:DefaultComponent,
+component:DefaultComponent,canActivate:[AuthGuard],
 children:[{
   path:'',
   component:DashboardComponent
@@ -44,6 +45,8 @@ children:[{
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
+
 })
 export class AppRoutingModule { }

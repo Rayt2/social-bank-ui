@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent {
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 
+  constructor(
+    private router: Router,
+    ){}
   toggleSideBar() {
     this.toggleSideBarForMe.emit();
     setTimeout(() => {
@@ -16,4 +20,14 @@ export class HeaderComponent {
       );
     }, 300);
   }
+
+  clearLocalStore(){
+    this.router.navigate(['/login']);
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('app_token');
+    window.localStorage.clear();
+
+
+  }
+
 }

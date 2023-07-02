@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   constructor(private formBuilder: FormBuilder,
     private authServiceService: AuthServiceService,
     private router: Router,
-
+    private _snackBar: MatSnackBar
     ){}
   ngOnInit(){
    this.logInFormValidation();
@@ -44,6 +45,10 @@ export class LoginComponent {
       },
       error: (error) => {
         console.log("out", error)
+        this._snackBar.open("Invalid Credentials ",'',{
+          duration:5000,
+          verticalPosition:'top'
+        })
 
       }
     });

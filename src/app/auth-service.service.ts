@@ -19,7 +19,10 @@ login(data: any): Observable<any> {
     )
   );
 }
+isUserlogIn(){
+  return !!localStorage.getItem('app_token');
 
+}
 
 
 

@@ -17,7 +17,7 @@ export class ApplycardComponent implements OnInit{
   lastName = new FormControl('', [Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   gender = new FormControl('', [Validators.required]);
-  cardNameInput:any;
+  cardNameInput:any='Business_Credit_Card'
   standalone= true;
   durationInSeconds = 5;
 
@@ -42,7 +42,6 @@ export class ApplycardComponent implements OnInit{
     if (this.email.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
@@ -50,7 +49,6 @@ export class ApplycardComponent implements OnInit{
     if (this.phone.hasError('required')) {
       return 'You must enter a value';
     }
-
     return this.email.hasError('phone') ? 'Not a valid phone' : '';
 
   }
@@ -79,7 +77,8 @@ export class ApplycardComponent implements OnInit{
       }
     });
     
-    
+
+    window.location.reload()
 
   }
 }
