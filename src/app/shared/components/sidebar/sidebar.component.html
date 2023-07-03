@@ -10,6 +10,7 @@
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/posts">Posts</a>
     <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a>
+    <a *ngIf="this.userName!=='admin'" mat-list-item routerLinkActive="list-item-active" routerLink="/application">Application</a>
 
     <mat-divider></mat-divider>
 

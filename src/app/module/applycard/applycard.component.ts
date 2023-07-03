@@ -63,7 +63,9 @@ export class ApplycardComponent implements OnInit{
        cardName : this.cardName.value,
        email : this.email.value ,
       phone:this.phone.value,
-    gender:this.gender.value}
+    gender:this.gender.value,
+    userName:localStorage.getItem('user_name')
+  }
     this.cardServiceService.applyCard(data).subscribe({
       next: (response) => {
         this._snackBar.open("Request Initiated New CreditCard",'',{

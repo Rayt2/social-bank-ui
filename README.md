@@ -28,3 +28,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Langauge 
  Angular 8, Angular Material, Highchart and Flex-layout
+ Install the dependency 
+Angular Material, Highchart and Flex-layout 

@@ -8,6 +8,7 @@ import { CreditcardComponent } from './module/creditcard/creditcard.component';
 import { ApplycardComponent } from './module/applycard/applycard.component';
 import { ApprovalComponent } from './module/approval/approval.component';
 import { AuthGuard } from './auth.guard';
+import { ApplicationComponent } from './module/application/application.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,11 @@ children:[{
   path:'posts',
   component:PostsComponent
 },
+{
+  path:'application',
+  component:ApplicationComponent
+},
+
 {
   path:'creditcard',
   component:CreditcardComponent

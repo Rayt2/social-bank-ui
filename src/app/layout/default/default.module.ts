@@ -27,13 +27,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { ApprovalComponent } from 'src/app/module/approval/approval.component';
 import {MatSnackBar, MatSnackBarRef, MatSnackBarModule} from '@angular/material/snack-bar';
 import { PopupComponent } from 'src/app/module/popup/popup.component';
+import { ApplicationComponent } from 'src/app/module/application/application.component';
 
 
 @NgModule({
   declarations: [DefaultComponent,
   DashboardComponent,
 PostsComponent,CreditcardComponent,
-DialogComponent,ApprovalComponent,ApplycardComponent,PopupComponent],
+DialogComponent,ApprovalComponent,ApplycardComponent,PopupComponent,ApplicationComponent],
   imports: [
     CommonModule,
     RouterModule,

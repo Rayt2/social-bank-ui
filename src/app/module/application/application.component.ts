@@ -5,11 +5,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CardServiceService } from 'src/app/card-service.service';
 
 @Component({
-  selector: 'app-approval',
-  templateUrl: './approval.component.html',
-  styleUrls: ['./approval.component.css']
+  selector: 'app-application',
+  templateUrl: './application.component.html',
+  styleUrls: ['./application.component.css']
 })
-export class ApprovalComponent implements AfterViewInit{
+export class ApplicationComponent {
+
   displayedColumns: string[] = ['userName', 'cardName','email','gender','phone','action'];
   //dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
   getAllCardData:any;
@@ -29,36 +30,22 @@ export class ApprovalComponent implements AfterViewInit{
 
 
   getAllCardDetails() {
+    let userName =localStorage.getItem('user_name');
+
     this.cardServiceService.getAllCardDetails().subscribe((data) => {
-      this.getAllCardData = data
+      this.getAllCardData =data.filter(
+        (obj:any)=>{
+          return obj.userName ===userName
+        }
+      )
     });
   }
 
-  approveCard(cardName:any,email:any,status:any){
-    let data={
-      cardName:cardName,
-      email:email,
-      status:status,
-      userName:localStorage.getItem('user_name')
-
-    }
-    this.cardServiceService.approvCard(data).subscribe((response) => {
-      this._snackBar.open("Approval/Cancel Done",'',{
-        duration:2000,
-        verticalPosition:'top'
-      })
-      this.getAllCardData = response
-      window.location.reload()
-
-    });
-
-  }
+  
+  
 
 }
 
     
-  
-
-  
 
 

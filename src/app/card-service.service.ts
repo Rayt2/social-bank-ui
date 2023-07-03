@@ -54,6 +54,18 @@ export class CardServiceService {
     );
   }
 
+  cardDeti(data: any): Observable<any> {
+    return this.httpClient.post('http://localhost:8090/approve', data, {
+      observe: 'response',
+    }).pipe(
+      tap(
+        (data) => this.handleResponse(data),
+        (error) => this.handleError(error)
+      )
+    );
+  }
+
+
 
   /**
    * Handles api response

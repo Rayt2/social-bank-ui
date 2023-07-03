@@ -2,8 +2,8 @@
     <table mat-table [dataSource]="this.getAllCardData">
   
       <ng-container matColumnDef="userName">
-        <th mat-header-cell *matHeaderCellDef> UserName </th>
-        <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
+        <th mat-header-cell *matHeaderCellDef> CustmorName </th>
+        <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
       </ng-container>
   
       <ng-container matColumnDef="email">
@@ -29,11 +29,11 @@
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td  mat-cell *matCellDef="let element" > 
-            <button *ngIf="element.status==='pending'" mat-raised-button style="margin-right: 16px;" color="primary"  (click)="approveCard(element.cardName,element.email,'approve')">Approve</button>
-            <button *ngIf="element.status==='pending'" mat-raised-button  style="margin-right: 16px;" color="warn"  (click)="approveCard(element.cardName,element.email,'cancelled')">Canel</button>
+          <button *ngIf="element.status==='pending'" mat-raised-button style="margin-right: 16px;" color="accent" >Pending</button>
+
             <button *ngIf="element.status==='approve'" mat-raised-button style="margin-right: 16px;" color="green" >Approved</button>
             <button *ngIf="element.status==='cancelled'" mat-raised-button style="margin-right: 16px;" color="warn" >Canelled</button>
-
+            
         </td>
        
       </ng-container>
